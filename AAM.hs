@@ -133,15 +133,15 @@ data Storable
 
 -- Continuations with store-allocated predecessor
 data Kont
-  = Mt                           -- empty continuation
-  | Ar (Exp, Env, Addr)          -- evaluate argument next
-  | Fn (Lambda, Env, Addr)       -- apply function next
-  | IfK (Exp, Exp, Env, Addr)    -- if-then-else continuation
-  | SetK (Var, Addr, Addr)       -- set! continuation: (var, var-addr, return-addr)
-  | WhileCondK (Exp, Exp, Env, Addr) -- while: condition evaluated, (cond, body, env, return)
-  | WhileBodyK (Exp, Exp, Env, Addr) -- while: body evaluated, (cond, body, env, return)
-  | PrimLeftK (PrimOp, Exp, Env, Addr)  -- evaluated left arg of prim
-  | PrimRightK (PrimOp, Storable, Addr) -- evaluated right arg, left val saved
+  = Mt
+  | Ar (Exp, Env, Addr)
+  | Fn (Lambda, Env, Addr)
+  | IfK (Exp, Exp, Env, Addr)
+  | SetK (Var, Addr, Addr)
+  | WhileCondK (Exp, Exp, Env, Addr)
+  | WhileBodyK (Exp, Exp, Env, Addr)
+  | PrimLeftK (PrimOp, Exp, Env, Addr)
+  | PrimRightK (PrimOp, Storable, Addr)
   deriving (Eq, Ord, Show)
 
 -- Full machine state
@@ -726,14 +726,6 @@ main = do
         , ("(while #f body)",        testWhileFalse)
         , ("conditional application", testCondApp)
         ]
-
-  putStrLn "============================================================"
-  putStrLn "AAM: Abstract Abstract Machine (Extended)"
-  putStrLn $ "  k = " ++ show kParam ++ " (0-CFA with store widening)"
-  putStrLn $ "  Abstract GC: " ++ show useGC
-  putStrLn $ "  Int widening threshold: " ++ show intWideningThreshold
-  putStrLn "============================================================"
-  putStrLn ""
 
   mapM_ (\(name, prog) -> do
     putStrLn $ "=== " ++ name ++ " ==="

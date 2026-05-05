@@ -1,6 +1,6 @@
-# Y-Accelerate
+# AAM x Accelerate
 
-**Demonstrating that AAM-derived abstract interpretation enables efficient
+**Prototype demonstration that AAM-derived abstract interpretation enables efficient
 compilation of iterative GPU programs.**
 
 ## Project

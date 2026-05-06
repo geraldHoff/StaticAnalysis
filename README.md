@@ -9,7 +9,7 @@ A prototype showing that the technique from Van Horn & Might's "Systematic
 Abstraction of Abstract Machines" (2011), instantiated with an abstract domain
 of array descriptors, can analyze while-loops over GPU arrays and produce
 information sufficient for the compiler to choose between efficient and
-conservative memory management strategies. Y-Accelerate as in Y combinator accelerate.
+conservative memory management strategies.
 
 ## Previous Limitations
 
